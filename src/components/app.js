@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
 
+import InputForm from './input_form'
+
 export default class App extends Component {
   render() {
     return (
-      <div>THUNDER TEST!</div>
+      <div>
+        <InputForm />
+      </div>
     )
   }
 }
