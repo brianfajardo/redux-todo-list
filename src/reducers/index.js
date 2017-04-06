@@ -3,7 +3,7 @@ import { combineReducers } from 'redux'
 import todos from './reducer_todos'
 
 const rootReducer = combineReducers({
-    todos,
-});
+    todos
+})
 
 export default rootReducer

@@ -25,6 +25,7 @@ class InputForm extends Component {
     onFormSubmit(e) {
         e.preventDefault()
         this.props.addTodo(this.state.inputText)
+        this.setState({ inputText: '' })
     }
 
     render() {
@@ -34,7 +35,7 @@ class InputForm extends Component {
                 onSubmit={this.onFormSubmit}>
                 <input
                     type='text'
-                    value={this.state.formText}
+                    value={this.state.inputText}
                     onChange={this.onInputChange}
                     className='form-control'
                     placeholder='Add something to do!' />
