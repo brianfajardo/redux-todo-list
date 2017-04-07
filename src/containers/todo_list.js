@@ -1,13 +1,24 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+
+import { toggleCompleted } from '../actions/index'
 
 class TodoList extends Component {
     render() {
-        console.log(this.props)
         return (
             <div>
                 <ul>
-                    {this.props.todos.map(todo => <li>{todo.text}</li>)}
+                    {this.props.todos.map(todo => {
+                        return (
+                            <li
+                                key={todo.id}
+                                onClick={() => this.props.toggleCompleted(todo.id)}
+                                style={{textDecoration: todo.completed ? 'line-through' : 'none'}}
+                            >
+                                {todo.text}
+                            </li>)
+                    })}
                 </ul>
             </div>
         )
@@ -20,4 +31,8 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(TodoList)
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({ toggleCompleted }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList)
