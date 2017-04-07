@@ -14,10 +14,12 @@ class TodoList extends Component {
                             <li
                                 key={todo.id}
                                 onClick={() => this.props.toggleCompleted(todo.id)}
-                                style={{textDecoration: todo.completed ? 'line-through' : 'none'}}
+                                style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}
+                                onMouseDown={e => e.preventDefault()}
                             >
                                 {todo.text}
-                            </li>)
+                            </li>
+                        )
                     })}
                 </ul>
             </div>
