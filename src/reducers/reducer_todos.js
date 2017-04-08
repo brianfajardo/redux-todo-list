@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ADD_TODO, TOGGLE_COMPLETED, SET_FILTER } from '../actions/index'
+import { ADD_TODO, TOGGLE_COMPLETED, DELETE_TODO } from '../actions/index'
 
 const INITIAL_STATE = []
 // Arbitrary ID generating method
@@ -17,6 +17,9 @@ export default function (state = INITIAL_STATE, action) {
                     id: idCounter++
                 }
             ]
+
+        case DELETE_TODO:
+            return state.filter(todo => todo.completed === false)
 
         case TOGGLE_COMPLETED:
             return state.map(todo => {

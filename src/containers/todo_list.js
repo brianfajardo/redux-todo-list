@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { toggleCompleted, setFilter } from '../actions/index'
+import { toggleCompleted } from '../actions/index'
 
 class TodoList extends Component {
     // Will filter todos array by app state filter on this.props
