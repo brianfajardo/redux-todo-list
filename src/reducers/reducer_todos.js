@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ADD_TODO, TOGGLE_COMPLETED } from '../actions/index'
+import { ADD_TODO, TOGGLE_COMPLETED, SET_FILTER } from '../actions/index'
 
 const INITIAL_STATE = []
 // Arbitrary ID generating method

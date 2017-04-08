@@ -8,28 +8,17 @@ class Footer extends Component {
     render() {
         return (
             <div>
+                {/*If there are no todos, hide filters*/}
                 {this.props.todos.length > 0 && (
                     <div>
                         <p>Filter:
-                            <a
-                                href='#'
-                                filter='ALL'
-                                onClick={() => setFilter(filter)}
-                            >
+                            <a onClick={e => { this.props.setFilter('DISPLAY_ALL') }}>
                                 All
                             </a>
-                            <a
-                                href='#'
-                                filter='COMPLETED'
-                                onClick={() => setFilter(filter)}
-                            >
+                            <a onClick={e => { this.props.setFilter('DISPLAY_COMPLETED') }}>
                                 Completed
                             </a>
-                            <a
-                                href='#'
-                                filter='NOT_COMPLETED'
-                                onClick={() => setFilter(filter)}
-                            >
+                            <a onClick={e => { this.props.setFilter('DISPLAY_NOT_COMPLETED') }}>
                                 Not Completed
                             </a>
                         </p>
@@ -42,8 +31,7 @@ class Footer extends Component {
 
 function mapStateToProps(state) {
     return {
-        todos: state.todos,
-        activefilter: state.filter
+        todos: state.todos
     }
 }
 

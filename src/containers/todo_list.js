@@ -2,14 +2,28 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { toggleCompleted } from '../actions/index'
+import { toggleCompleted, setFilter } from '../actions/index'
 
 class TodoList extends Component {
+    // Will filter todos array by app state filter on this.props
+    getTodosByFilter(todos, filter) {
+        switch (filter) {
+            case 'DISPLAY_ALL':
+                return todos
+            case 'DISPLAY_COMPLETED':
+                return todos.filter(todo => todo.completed === true)
+            case 'DISPLAY_NOT_COMPLETED':
+                return todos.filter(todo => todo.completed === false)
+        }
+    }
+
     render() {
+        const visibleTodos = this.getTodosByFilter(this.props.todos, this.props.filter)
+
         return (
             <div>
                 <ul>
-                    {this.props.todos.map(todo => {
+                    {visibleTodos.map(todo => {
                         return (
                             <li
                                 key={todo.id}
@@ -29,7 +43,8 @@ class TodoList extends Component {
 
 function mapStateToProps(state) {
     return {
-        todos: state.todos
+        todos: state.todos,
+        filter: state.filter
     }
 }
 
