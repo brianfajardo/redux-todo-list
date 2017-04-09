@@ -6,7 +6,7 @@ const INITIAL_STATE = []
 // Arbitrary ID generating method
 let idCounter = 0
 
-export default function (state = INITIAL_STATE, action) {
+export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case ADD_TODO:
             return [

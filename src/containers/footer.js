@@ -30,28 +30,24 @@ class Footer extends Component {
                             Filter:
                             <Li
                                 onClick={() => { this.props.setFilter('DISPLAY_ALL') }}
-                                activateStyling={this.props.filter === 'DISPLAY_ALL'}
-                            >
+                                activateStyling={this.props.filter === 'DISPLAY_ALL'}>
                                 All
                             </Li>
                             <Li
                                 onClick={() => { this.props.setFilter('DISPLAY_COMPLETED') }}
-                                activateStyling={this.props.filter === 'DISPLAY_COMPLETED'}
-                            >
+                                activateStyling={this.props.filter === 'DISPLAY_COMPLETED'}>
                                 Completed
                             </Li>
                             <Li
                                 onClick={() => { this.props.setFilter('DISPLAY_NOT_COMPLETED') }}
-                                activateStyling={this.props.filter === 'DISPLAY_NOT_COMPLETED'}
-                            >
+                                activateStyling={this.props.filter === 'DISPLAY_NOT_COMPLETED'}>
                                 Not Completed
                             </Li>
                         </ul>
                         <button
                             type='button'
                             onClick={() => this.props.deleteTodos()}
-                            className='btn btn-sm btn-danger'
-                        >
+                            className='btn btn-sm btn-danger'>
                             Clear Completed
                         </button>
                     </Div>
@@ -61,15 +57,11 @@ class Footer extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        todos: state.todos,
-        filter: state.filter
-    }
-}
+const mapStateToProps = state => ({
+    todos: state.todos,
+    filter: state.filter
+})
 
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ setFilter, deleteTodos }, dispatch)
-}
+const mapDispatchToProps = dispatch => (bindActionCreators({ setFilter, deleteTodos }, dispatch))
 
 export default connect(mapStateToProps, mapDispatchToProps)(Footer)

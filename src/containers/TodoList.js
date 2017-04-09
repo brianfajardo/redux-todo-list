@@ -41,8 +41,7 @@ class TodoList extends Component {
                                 key={todo.id}
                                 onClick={() => this.props.toggleCompleted(todo.id)}
                                 activateStyling={todo.completed}
-                                onMouseDown={e => e.preventDefault()}
-                            >
+                                onMouseDown={e => e.preventDefault()}>
                                 {todo.text}
                             </Li>
                         )
@@ -53,15 +52,12 @@ class TodoList extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        todos: state.todos,
-        filter: state.filter
-    }
-}
+const mapStateToProps = state => ({
+    todos: state.todos,
+    filter: state.filter
+})
 
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ toggleCompleted }, dispatch)
-}
+const mapDispatchToProps = dispatch => (bindActionCreators({ toggleCompleted }, dispatch))
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList)

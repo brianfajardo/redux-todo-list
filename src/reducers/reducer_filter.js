@@ -4,7 +4,7 @@ import { SET_FILTER } from '../actions/index'
 
 const INITIAL_STATE = 'DISPLAY_ALL'
 
-export default function (state = INITIAL_STATE, action) {
+export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case 'DISPLAY_ALL':
             return action.payload
