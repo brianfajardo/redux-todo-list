@@ -1,8 +1,20 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import styled from 'styled-components'
 
 import { toggleCompleted } from '../actions/index'
+
+const Li = styled.li`
+    margin-top: 10px
+    font-size: 18px
+    text-decoration: ${props => props.activateStyling ? 'line-through' : 'none'}
+    color: ${props => props.activateStyling ? 'grey' : 'default'};
+
+    &:hover {
+        cursor: pointer
+    }
+`
 
 class TodoList extends Component {
     // Will filter todos array by app state filter on this.props
@@ -22,20 +34,20 @@ class TodoList extends Component {
 
         return (
             <div>
-                <ul>
+                <ol>
                     {visibleTodos.map(todo => {
                         return (
-                            <li
+                            <Li
                                 key={todo.id}
                                 onClick={() => this.props.toggleCompleted(todo.id)}
-                                style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}
+                                activateStyling={todo.completed}
                                 onMouseDown={e => e.preventDefault()}
                             >
                                 {todo.text}
-                            </li>
+                            </Li>
                         )
                     })}
-                </ul>
+                </ol>
             </div>
         )
     }

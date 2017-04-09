@@ -1,6 +1,6 @@
 export const ADD_TODO = 'ADD_TODO'
 export const TOGGLE_COMPLETED = 'TOGGLE_COMPLETED'
-export const DELETE_TODO = 'DELETE_TODO'
+export const DELETE_TODOS = 'DELETE_TODO'
 
 export function addTodo(text) {
     return {
@@ -9,9 +9,9 @@ export function addTodo(text) {
     }
 }
 
-export function deleteTodo(id) {
+export function deleteTodos(id) {
     return {
-        type: DELETE_TODO,
+        type: DELETE_TODOS,
         payload: id
     }
 }

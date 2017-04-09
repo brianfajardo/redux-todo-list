@@ -1,8 +1,23 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import styled from 'styled-components'
 
-import { setFilter, deleteTodo } from '../actions/index'
+import { setFilter, deleteTodos } from '../actions/index'
+
+const Li = styled.li`
+    margin-left: 15px
+    list-style: none
+    display: inline
+    cursor: pointer
+    font-weight: ${props => props.activateStyling ? 'bold' : 'default'}
+    font-size: ${props => props.activateStyling ? '1.2rem' : 'default'}
+    color: ${props => props.activateStyling ? 'green' : 'default'}
+`
+
+const Div = styled.div`
+    text-align: center
+`
 
 class Footer extends Component {
     render() {
@@ -10,36 +25,36 @@ class Footer extends Component {
             <div>
                 {/*If there are no todos, hide filters*/}
                 {this.props.todos.length > 0 && (
-                    <div>
-                        <p>Filter:
-                            <a
+                    <Div>
+                        <ul>
+                            Filter:
+                            <Li
                                 onClick={() => { this.props.setFilter('DISPLAY_ALL') }}
-                                style={{ color: this.props.filter === 'DISPLAY_ALL' ? 'red' : 'black' }}
+                                activateStyling={this.props.filter === 'DISPLAY_ALL'}
                             >
                                 All
-                            </a>
-
-                            <a
+                            </Li>
+                            <Li
                                 onClick={() => { this.props.setFilter('DISPLAY_COMPLETED') }}
-                                style={{ color: this.props.filter === 'DISPLAY_COMPLETED' ? 'red' : 'black' }}
+                                activateStyling={this.props.filter === 'DISPLAY_COMPLETED'}
                             >
                                 Completed
-                            </a>
-
-                            <a
+                            </Li>
+                            <Li
                                 onClick={() => { this.props.setFilter('DISPLAY_NOT_COMPLETED') }}
-                                style={{ color: this.props.filter === 'DISPLAY_NOT_COMPLETED' ? 'red' : 'black' }}
+                                activateStyling={this.props.filter === 'DISPLAY_NOT_COMPLETED'}
                             >
                                 Not Completed
-                            </a>
-                        </p>
+                            </Li>
+                        </ul>
                         <button
                             type='button'
-                            onClick={() => this.props.deleteTodo()}
+                            onClick={() => this.props.deleteTodos()}
                             className='btn btn-sm btn-danger'
                         >
-                            Clear Completed</button>
-                    </div>
+                            Clear Completed
+                        </button>
+                    </Div>
                 )}
             </div>
         )
@@ -54,7 +69,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ setFilter, deleteTodo }, dispatch)
+    return bindActionCreators({ setFilter, deleteTodos }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Footer)

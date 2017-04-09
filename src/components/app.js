@@ -1,17 +1,29 @@
 import React, { Component } from 'react'
+import styled from 'styled-components'
 
-import InputForm from '../containers/input_form'
-import TodoList from '../containers/todo_list'
-import Footer from '../containers/footer'
+import InputForm from '../containers/InputForm'
+import TodoList from '../containers/TodoList'
+import Footer from '../containers/Footer'
+
+const StyledContainer = styled.div`
+  background: papayawhip
+`
+
+const StyledHeader = styled.h3`
+  text-align: center
+  margin-top: 15px
+  padding-top: 10px
+`
 
 export default class App extends Component {
   render() {
     return (
-      <div>
+      <StyledContainer>
+        <StyledHeader>React/Redux To Do List</StyledHeader>
         <InputForm />
         <TodoList />
         <Footer />
-      </div>
+      </StyledContainer>
     )
   }
 }

@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import styled from 'styled-components'
 
 import { addTodo } from '../actions/index'
+
+const Form = styled.form`
+    margin-top: 25px
+`
 
 class InputForm extends Component {
     constructor(props) {
@@ -30,23 +35,23 @@ class InputForm extends Component {
 
     render() {
         return (
-            <form
-                className='input-group'
-                onSubmit={this.onFormSubmit}>
-                <input
-                    type='text'
-                    value={this.state.inputText}
-                    onChange={this.onInputChange}
-                    className='form-control'
-                    placeholder='Add something to do!' />
-                <span className='input-group-btn'>
-                    <button
-                        type='submit'
-                        className='btn btn-primary'>
-                        Add Todo
+                <Form
+                    className='input-group'
+                    onSubmit={this.onFormSubmit}>
+                    <input
+                        type='text'
+                        value={this.state.inputText}
+                        onChange={this.onInputChange}
+                        className='form-control'
+                        placeholder='Add something to do!' />
+                    <span className='input-group-btn'>
+                        <button
+                            type='submit'
+                            className='btn btn-primary'>
+                            Add
                     </button>
-                </span>
-            </form>
+                    </span>
+                </Form>
         )
     }
 }
