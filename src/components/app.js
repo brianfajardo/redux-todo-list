@@ -12,14 +12,21 @@ const StyledContainer = styled.div`
 const StyledHeader = styled.h3`
   text-align: center
   margin-top: 15px
-  padding-top: 10px
+  padding-top: 10px;
+
+  > p {
+    font-size: 15px
+  }
 `
 
 export default class App extends Component {
   render() {
     return (
       <StyledContainer>
-        <StyledHeader>React/Redux To Do List</StyledHeader>
+        <StyledHeader>
+          React/Redux To Do List
+          <p>Click on a todo to complete!</p>
+          </StyledHeader>
         <InputForm />
         <TodoList />
         <Footer />

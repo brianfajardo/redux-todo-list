@@ -1,20 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 import { toggleCompleted } from '../actions/index'
-
-const Li = styled.li`
-    margin-top: 10px
-    font-size: 18px
-    text-decoration: ${props => props.activateStyling ? 'line-through' : 'none'}
-    color: ${props => props.activateStyling ? 'grey' : 'default'};
-
-    &:hover {
-        cursor: pointer
-    }
-`
 
 class TodoList extends Component {
     // Will filter todos array by app state filter on this.props
@@ -61,3 +50,28 @@ const mapDispatchToProps = dispatch => (bindActionCreators({ toggleCompleted }, 
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList)
+
+// Styled-components
+const slideInFromRight = keyframes`
+  from {
+    transform: translateX(10px);
+    opacity: 0
+  }
+
+  to {
+    transform: translateX(0px);
+    opacity: 1
+  }
+`;
+
+const Li = styled.li`
+    margin-top: 10px
+    font-size: 18px
+    text-decoration: ${props => props.activateStyling ? 'line-through' : 'none'}
+    color: ${props => props.activateStyling ? 'grey' : 'default'};
+    animation: ${slideInFromRight} 0.4s ease;
+
+    &:hover {
+        cursor: pointer
+    }
+`
